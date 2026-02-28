@@ -38,10 +38,10 @@ export default function ToolCard({ tool, decision, onToggle, locked }) {
           </p>
 
           <div className="flex items-center gap-2 flex-wrap">
-            {tool.platform_link && (
-              <a href={tool.platform_link} target="_blank" rel="noopener noreferrer"
+            {tool.domain && (
+              <a href={tool.domain.startsWith("http") ? tool.domain : `https://${tool.domain}`} target="_blank" rel="noopener noreferrer"
                 className="text-[10px] text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-                <ExternalLink size={10} /> {tool.domain || "Visit"}
+                <ExternalLink size={10} /> {tool.domain}
               </a>
             )}
             {tags.slice(0, 5).map((tag, i) => (
@@ -98,12 +98,12 @@ export default function ToolCard({ tool, decision, onToggle, locked }) {
                   </div>
                 </div>
               )}
-              {tool.platform_link && (
+              {tool.domain && (
                 <div>
                   <span className="text-xs text-gray-500 block mb-1">Link</span>
-                  <a href={tool.platform_link} target="_blank" rel="noopener noreferrer"
+                  <a href={tool.domain.startsWith("http") ? tool.domain : `https://${tool.domain}`} target="_blank" rel="noopener noreferrer"
                     className="text-xs text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-                    <ExternalLink size={12} /> {tool.platform_link}
+                    <ExternalLink size={12} /> {tool.domain}
                   </a>
                 </div>
               )}
